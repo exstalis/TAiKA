@@ -3,11 +3,21 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Card from './components/Cards';
 
 function StoryScreen() {
   return (
     <View style={styles.container}>
-      <Text>Story Screen</Text>
+      <Text>TAiKA</Text>
+      <Card
+      style={{ margin: 20 }}
+      imageSource={{ uri: 'https://cdn.web.imagine.art/imagine-frontend/assets/images/ai-picture-generator-hero-image.webp' }}
+      bodyText="This is TAiKA, a story telling app. It is a platform where you can read and write stories. You can also share your stories with others."
+      buttonText="begin"
+      onButtonPress={() => alert('Button Pressed')}
+       >
+      
+    </Card>
       <StatusBar style="auto" />
     </View>
   );
@@ -16,7 +26,9 @@ function StoryScreen() {
 function SettingsScreen() {
   return (
     <View style={styles.container}>
-      <Text>Settings Screen</Text>
+      <Card>
+        <Text>Settings Screen</Text>
+      </Card>
       <StatusBar style="auto" />
     </View>
   );
