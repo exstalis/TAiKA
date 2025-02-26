@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import NavigationStack from './navigation/NavigationStack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Card from './components/Cards';
@@ -25,25 +25,9 @@ function StoryScreen() {
 
 function SettingsScreen() {
   return (
-    <View style={styles.container}>
-      <Card>
-        <Text>Settings Screen</Text>
-      </Card>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
     </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Story" component={StoryScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
   );
 }
 
@@ -55,3 +39,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <NavigationStack />
+    </NavigationContainer>
+  );
+}
