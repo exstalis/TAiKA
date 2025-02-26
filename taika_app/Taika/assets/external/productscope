@@ -1,0 +1,66 @@
+I want to build a react expo app that a user can create stories by quickly setting : 
+	 source language, translation, length words: 1000, 1500,2800 (up to 8000) and giving language proficiency level: easy, moderate ,advanced.
+	 
+and describing their story:
+	giving a plot to the story that will be generated or telling what they want to hear about.
+and generates a story to:
+	 help practicing language, creating mixed language stories that they can share with other people, enjoy reading and crafting story idea.
+
+
+*I want to build an app that does x (feature) to solve y (problem)for these users*
+
+
+NOTE: DESIGN FILES ARE GONNA BE PROVIDED LATER.
+Please also use console-log that i can see on terminal to check the actions. Please provide step by step, structural implementation one step at a time!!!!
+I want you to step by step write every code files for react native typescript using expo app. first start over and please do not reveal every information all at once. As I respond to you 
+"._continue" you can jump over to the next step. Also if i want to ask questions in between steps use step[2][5]: meaning that I am including every step between step 2 and step 5 (for example: 2,3,4,5). Let go by step by step approach. Another example if I give step[3]: specifically about step 3, if i give you step[][3], this means steps:1,2,3. 
+I'm going to use windsurf editor and i want to install react native and create a blank project with typescript support and all the typescript, based on the installed version. 
+Start creating screens by
+Analyzing the design ui files and create navigation system. 
+create commonly used functions and usage any kind
+that are programmatically structured properly. (ie inheritability, polymorph)
+Also help with hierarchy, like the screen navigation. 
+create color for components
+use the colors: 
+there is a screenshot of all colors to be used
+HEX CODE | color name | example usage
+#0f172a : darknavy - for subtitles that are light font
+#f80446 : pinkred - buttons, headings background, etc (Accent color)
+#ffe889 : suntastic - background color, light text color for dark background
+
+
+
+#### Analysis of Design UI Files:
+
+Based on the screenshots and your description, here’s a breakdown of the screens and their purposes:
+
+1. **Landing Page **:
+   - Displays the app logo ("TAIKA") and options like "Search a story," "Sign up/in," and "Try."
+   - This is the entry point for users, where they can explore the app or sign up/log in.
+
+2. **Sign Up Page **:
+   - Allows users to create a new account with fields for name, username, email, and password.
+   - Includes options for social media sign-up (X.com, Reddit, Google, Instagram, TikTok) via hierarchical implementation (we’ll plan for this later).
+   - This screen should navigate back to the landing page or forward to the story creation flow after signing up.
+
+3. **Story Creation Pages **:
+   - **(Create Story Template)**:
+     - Users input the source language, target translation language, word count (e.g., 1000, 1500, 2800, up to 8000), and difficulty level (easy, moderate, advanced).
+     - Example input: `type: Italian, Spanish, 1000, moderate`.
+     - This screen should navigate to the next step (describing the story).
+   - **(Write About a Story)**:
+     - Users describe the story plot or what they want to hear about (up to 300 words, expandable to 500 later).
+     - This screen should generate the story or navigate to the story display.
+
+4. **Story Display Page **:
+   - Shows two vertically aligned stories in a 2x1 layout (2 rows, 1 column).
+   - Includes design specifics like font colors, sizes, and layout adjustments.
+   - Users can share or save the stories.
+   - This screen should navigate back to the previous screen or go to next screen.
+   - The Story Screens have a swipe left-right functions inside the screen to change the story. Users can swipe both screens on the top and the bottom to look at different pages. 
+
+#### Navigation Hierarchy:
+Based on the above, the navigation flow will look like this:
+- **Landing Page** → **Sign Up Page** (or directly to Story Creation if logged in).
+- **Landing Page** → **Story Creation (Step 1: Template)** → **Story Creation (Step 2: Description)** → **Story Display**.
+- Users can navigate back to previous screens or return to the landing page.
