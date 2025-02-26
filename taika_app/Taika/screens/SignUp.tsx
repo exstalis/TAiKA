@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigation = useNavigation();
 
   const handleSignUp = () => {
     if (password !== confirmPassword) {
@@ -48,6 +50,15 @@ const SignUp = () => {
       <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Landing')}>
+        <Text style={styles.buttonText}>Go to Landing</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateStoryTemplate')}>
+        <Text style={styles.buttonText}>Go to Create Story Template</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('WriteAboutStory')}>
+        <Text style={styles.buttonText}>Go to Write About Story</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -77,6 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#4CAF50',
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
   },
   buttonText: {
     color: '#fff',

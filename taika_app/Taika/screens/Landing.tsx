@@ -8,8 +8,11 @@ const Landing = () => {
   return (
     <View style={styles.container}>
       <Text>Landing Page</Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignUp')}>
-        <Text style={styles.buttonText}>Go to Sign Up</Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('SignUp')}
+      >
+        <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
   );
