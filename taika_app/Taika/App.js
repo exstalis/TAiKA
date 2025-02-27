@@ -4,6 +4,7 @@ import NavigationStack from './navigation/NavigationStack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Card from './components/Cards';
+import Landing from './screens/Landing';
 
 function StoryScreen() {
   return (
