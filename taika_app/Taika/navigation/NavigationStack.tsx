@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 
 export default function NavigationStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Landing">
       <Stack.Screen name="Landing" component={Landing} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="CreateStoryTemplate" component={CreateStoryTemplate} />
