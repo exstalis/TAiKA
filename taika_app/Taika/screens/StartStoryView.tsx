@@ -1,4 +1,4 @@
-// screens/WriteAboutStory.tsx
+// screens/StartStoryView.tsx
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -7,17 +7,17 @@ import { RootStackParamList } from '../types/navigation';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-const WriteAboutStory = () => {
+const StartStoryView = () => {
   const navigation = useNavigation<NavigationProp>();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Write About Story Page</Text>
+      <Text style={styles.title}>Start Story View</Text>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('StoryDisplay', { storyId: 'example-story' })}
+        onPress={() => navigation.navigate('WriteAboutStory')}
       >
-        <Text style={styles.buttonText}>Go to Story Display</Text>
+        <Text style={styles.buttonText}>Go to Write About Story</Text>
       </TouchableOpacity>
     </View>
   );
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WriteAboutStory;
+export default StartStoryView;

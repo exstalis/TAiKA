@@ -1,55 +1,47 @@
+// screens/LandingScreen.tsx
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-// screens/Landin gScreen.tsx
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { commonStyles } from '../styles/commonStyles';
 import { colors } from '../constants/colors';
 import CustomButton from '../components/CustomButton';
+import { RootStackParamList } from '../types/navigation';
 
+// Type the navigation prop using RootStackParamList
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Landing = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp>();
   console.log('LandingScreen rendered with background color:', colors.suntastic);
 
-
-//   return (
-//     <View style={styles.buttonContainer}>
-//       <Text>Landing Page</Text>
-//       <TouchableOpacity
-//         style={styles.button}
-//         onPress={() => navigation.navigate('SignUp')}>
-//         <Text style={styles.title}>Sign Up</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
-
   return (
-    <View>
+    <View style={[commonStyles.centeredContainer, { backgroundColor: colors.white }]}>
       <View>
-        <Text style={styles.title}>TAIKA</Text> 
-        <Text style={styles.subtitle}> generate/share bilingual stories</Text>
-      </View>
-      <View style={styles.buttonContainer}>
-        <CustomButton
-          title="search a story"
-          onPress={() => console.log('Search a story button pressed!')}
-          style={[styles.button, { backgroundColor: colors.grayishBlue }]}
-          textColor={colors.white}
-        />
-        <CustomButton
-          title="sign up/in"
-          onPress= {() => navigation.navigate('SignUp')}
-          style={[styles.button, { backgroundColor: colors.white }]}
-          textColor={colors.grayishBlue}
-           // Updated to use grayishBlue for better contrast
-        />
-        <CustomButton
-          title="try"
-          onPress={() => console.log('Try button pressed!')}
-          style={[styles.button, { backgroundColor: colors.pinkred }]}
-          textColor={colors.white}
-        />
+        <Text style={commonStyles.title}>TAIKA</Text>
+        <Text style={[commonStyles.subtitle, { marginBottom: 20 }]}>
+          generate/share bilingual stories
+        </Text>
+        <View style={styles.buttonContainer}>
+          <CustomButton
+            title="search a story"
+            onPress={() => navigation.navigate('SearchStory')} // Now TypeScript knows this is valid
+            style={[commonStyles.accentButton, { backgroundColor: colors.grayishBlue }]}
+            textColor={colors.white}
+          />
+          <CustomButton
+            title="sign up/in"
+            onPress={() => navigation.navigate('SignUp')} // Now TypeScript knows this is valid
+            style={[commonStyles.accentButton, { backgroundColor: colors.white }]}
+            textColor={colors.grayishBlue}
+          />
+          <CustomButton
+            title="try"
+            onPress={() => navigation.navigate('Try')} // Now TypeScript knows this is valid
+            style={[commonStyles.accentButton, { backgroundColor: colors.pinkred }]}
+            textColor={colors.white}
+          />
+        </View>
       </View>
     </View>
   );
@@ -69,10 +61,10 @@ const styles = StyleSheet.create({
     marginRight: 83,
   },
   title: {
-    // Add styles for title here
+    // Add styles for title here if needed
   },
   subtitle: {
-    // Add styles for subtitle here
+    // Add styles for subtitle here if needed
   },
 });
 

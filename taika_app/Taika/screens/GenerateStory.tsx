@@ -1,4 +1,4 @@
-// screens/CreateStoryTemplate.tsx
+// screens/GenerateStory.tsx
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -7,13 +7,13 @@ import { RootStackParamList } from '../types/navigation';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-const CreateStoryTemplate = () => {
+const GenerateStory = () => {
   const navigation = useNavigation<NavigationProp>();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Create Story Template</Text>
-      <Text style={styles.subtitle}>Design your story template here.</Text>
+      <Text style={styles.title}>Generate Story</Text>
+      <Text style={styles.subtitle}>Create a new bilingual story here.</Text>
     </View>
   );
 };
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateStoryTemplate;
+export default GenerateStory;

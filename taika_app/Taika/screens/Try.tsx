@@ -1,4 +1,4 @@
-// screens/CreateStoryTemplate.tsx
+// screens/Try.tsx
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -7,13 +7,13 @@ import { RootStackParamList } from '../types/navigation';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-const CreateStoryTemplate = () => {
+const Try = () => {
   const navigation = useNavigation<NavigationProp>();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Create Story Template</Text>
-      <Text style={styles.subtitle}>Design your story template here.</Text>
+      <Text style={styles.title}>Try TAIKA</Text>
+      <Text style={styles.subtitle}>Experience TAIKA in trial mode.</Text>
     </View>
   );
 };
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateStoryTemplate;
+export default Try;
