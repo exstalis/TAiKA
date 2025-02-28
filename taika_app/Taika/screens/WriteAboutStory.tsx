@@ -1,16 +1,21 @@
+// screens/WriteAboutStory.tsx
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../types/navigation';
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const WriteAboutStory = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp>();
 
   return (
     <View style={styles.container}>
-      <Text>Write About Story Page</Text>
+      <Text style={styles.title}>Write About Story Page</Text>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('StoryDisplay')}
+        onPress={() => navigation.navigate('StoryDisplay', { storyId: 'example-story' })}
       >
         <Text style={styles.buttonText}>Go to Story Display</Text>
       </TouchableOpacity>
@@ -23,6 +28,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
   button: {
     backgroundColor: '#4CAF50',

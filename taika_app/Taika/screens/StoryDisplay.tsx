@@ -1,11 +1,20 @@
+// screens/StoryDisplay.tsx
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, Dimensions } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
+import { RootStackParamList } from '../types/navigation';
+
+type StoryDisplayRouteProp = RouteProp<RootStackParamList, 'StoryDisplay'>;
 
 const StoryDisplay = () => {
+  const route = useRoute<StoryDisplayRouteProp>();
+  const storyId = route.params?.storyId || 'default';
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Story Title</Text>
+        <Text style={styles.title}>Story Title (ID: {storyId})</Text>
         <Text style={styles.author}>Author Name</Text>
       </View>
       <ScrollView style={styles.storyContainer}>

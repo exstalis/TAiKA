@@ -1,77 +1,67 @@
+// screens/Landing.tsx
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-// screens/Landin gScreen.tsx
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../types/navigation';
 import { commonStyles } from '../styles/commonStyles';
 import { colors } from '../constants/colors';
-import CustomButton from '../components/CustomButton';
 
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Landing = () => {
-  const navigation = useNavigation();
-  console.log('LandingScreen rendered with background color:', colors.suntastic);
-
+  const navigation = useNavigation<NavigationProp>();
+  console.log('LandingScreen rendered');
 
   return (
-    <View style={styles.buttonContainer}>
-      <Text>Landing Page</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('SignUp')}>
-        <Text style={styles.title}>Sign Up</Text>
-      </TouchableOpacity>
-    </View>
+    <LinearGradient
+      colors={[colors.pinkRedGradientStart, colors.peachOrangeGradientEnd]}
+      style={commonStyles.fullScreenContainer}
+    >
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={commonStyles.logo}>TAIKA</Text>
+          <Text style={commonStyles.tagline}>generate/share bilingual stories</Text>
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={commonStyles.grayButton}
+            onPress={() => navigation.navigate('SearchStory')}
+          >
+            <Text style={commonStyles.grayButtonText}>search a story</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={commonStyles.whiteButton}
+            onPress={() => navigation.navigate('SignUp')}
+          >
+            <Text style={commonStyles.whiteButtonText}>sign up/in</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={commonStyles.accentButton}
+            onPress={() => navigation.navigate('CreateStoryTemplate')}
+          >
+            <Text style={commonStyles.accentButtonText}>try</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </LinearGradient>
   );
 };
 
-//   return (
-//     <View>
-//       <View>
-//         <Text style={styles.title}>TAIKA</Text> 
-//         <Text style={styles.subtitle}> generate/share bilingual stories</Text>
-//       </View>
-//       <View style={styles.buttonContainer}>
-//         <CustomButton
-//           title="search a story"
-//           onPress={() => console.log('Search a story button pressed!')}
-//           style={[styles.button, { backgroundColor: colors.grayishBlue }]}
-//           textColor={colors.white}
-//         />
-//         <CustomButton
-//           title="sign up/in"
-//           onPress={() => console.log('Sign up/in button pressed!')}
-//           style={[styles.button, { backgroundColor: colors.white }]}
-//           textColor={colors.grayishBlue} // Updated to use grayishBlue for better contrast
-//         />
-//         <CustomButton
-//           title="try"
-//           onPress={() => console.log('Try button pressed!')}
-//           style={[styles.button, { backgroundColor: colors.pinkred }]}
-//           textColor={colors.white}
-//         />
-//       </View>
-//     </View>
-//   );
-// };
-
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 30,
+  },
+  header: {
+    marginBottom: 40, // Adjust spacing between header and buttons
+  },
   buttonContainer: {
     width: '100%',
     alignItems: 'center',
-  },
-  button: {
-    width: 252,
-    height: 42,
-    marginTop: 123,
-    marginBottom: 17,
-    marginLeft: 78,
-    marginRight: 83,
-  },
-  title: {
-    // Add styles for title here
-  },
-  subtitle: {
-    // Add styles for subtitle here
   },
 });
 
