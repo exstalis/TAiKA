@@ -3,57 +3,76 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../constants/colors';
 
 export const commonStyles = StyleSheet.create({
-  // Container for centering content
+  // Full-screen container
+  fullScreenContainer: {
+    flex: 1,
+  },
+  // Centered container
   centeredContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  // Common title style
-  title: {
-    fontSize: 32,
+  // Logo style (for "TAIKA")
+  logo: {
+    fontSize: 48,
     fontWeight: 'bold',
     color: colors.darknavy,
+    marginBottom: 8,
   },
-  // Subtitle style (e.g., "story template", "a story")
-  subtitle: {
+  // Tagline style (e.g., "generate/share bilingual stories")
+  tagline: {
     fontSize: 16,
-    color: colors.pinkred,
-    marginBottom: 20,
+    color: colors.darknavy,
+    marginBottom: 40,
   },
-  // Accent button style (e.g., "next", "generate", "sign up")
+  // Button styles
   accentButton: {
     backgroundColor: colors.pinkred,
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 24,
-    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 252,
+    height: 42,
+    marginVertical: 17,
   },
   accentButtonText: {
     color: colors.white,
     fontSize: 16,
     fontWeight: '600',
-    textAlign: 'center',
   },
-  // Input field style
-  input: {
-    backgroundColor: colors.lightGray,
-    padding: 12,
-    borderRadius: 8,
-    marginVertical: 8,
+  grayButton: {
+    backgroundColor: colors.grayishBlue,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 252,
+    height: 42,
+    marginVertical: 17,
+  },
+  grayButtonText: {
+    color: colors.white,
     fontSize: 16,
-    color: colors.darknavy,
+    fontWeight: '600',
   },
-  // Card style for story display
-  card: {
+  whiteButton: {
     backgroundColor: colors.white,
-    borderRadius: 12,
-    padding: 16,
-    marginVertical: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3, // For Android shadow
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 252,
+    height: 42,
+    marginVertical: 17,
+  },
+  whiteButtonText: {
+    color: colors.darknavy,
+    fontSize: 16,
+    fontWeight: '600',
   },
 });

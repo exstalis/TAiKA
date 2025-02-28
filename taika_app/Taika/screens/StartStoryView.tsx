@@ -1,48 +1,30 @@
 // screens/StartStoryView.tsx
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
+import { commonStyles } from '../styles/commonStyles';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const StartStoryView = () => {
   const navigation = useNavigation<NavigationProp>();
+  console.log('StartStoryView rendered');
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Start Story View</Text>
+    <View style={commonStyles.centeredContainer}>
       <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('WriteAboutStory')}
+        style={commonStyles.accentButton}
+        onPress={() => {
+          console.log('Navigating to Landing');
+          navigation.navigate('Landing');
+        }}
       >
-        <Text style={styles.buttonText}>Go to Write About Story</Text>
+        <Text style={commonStyles.accentButtonText}>Go to Landing</Text>
       </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  button: {
-    backgroundColor: '#4CAF50',
-    padding: 10,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-  },
-});
 
 export default StartStoryView;

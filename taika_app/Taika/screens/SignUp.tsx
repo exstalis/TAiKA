@@ -4,6 +4,8 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'reac
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
+import { commonStyles } from 'styles/commonStyles';
+import { colors } from 'constants/colors';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -25,8 +27,8 @@ const SignUp = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Sign Up</Text>
+    <View style={[commonStyles.centeredContainer, { backgroundColor: colors.white }]}>
+      <Text style={[commonStyles.tagline, { color: colors.pinkRedGradientStart }]}>Sign Up</Text>
       <TextInput
         style={styles.input}
         placeholder="Name"
