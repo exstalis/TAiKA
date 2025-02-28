@@ -1,12 +1,13 @@
 // screens/Landing.tsx
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
 import { commonStyles } from '../styles/commonStyles';
 import { colors } from '../constants/colors';
+import CustomButton from '../components/CustomButton';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -25,24 +26,21 @@ const Landing = () => {
           <Text style={commonStyles.tagline}>generate/share bilingual stories</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={commonStyles.grayButton}
+          <CustomButton
+            title="search a story"
             onPress={() => navigation.navigate('SearchStory')}
-          >
-            <Text style={commonStyles.grayButtonText}>search a story</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={commonStyles.whiteButton}
+            buttonType="gray"
+          />
+          <CustomButton
+            title="sign up/in"
             onPress={() => navigation.navigate('SignUp')}
-          >
-            <Text style={commonStyles.whiteButtonText}>sign up/in</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={commonStyles.accentButton}
+            buttonType="white"
+          />
+          <CustomButton
+            title="try"
             onPress={() => navigation.navigate('CreateStoryTemplate')}
-          >
-            <Text style={commonStyles.accentButtonText}>try</Text>
-          </TouchableOpacity>
+            buttonType="accent"
+          />
         </View>
       </View>
     </LinearGradient>
@@ -57,7 +55,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   header: {
-    marginBottom: 40, // Adjust spacing between header and buttons
+    marginBottom: 40,
   },
   buttonContainer: {
     width: '100%',

@@ -1,68 +1,57 @@
 // components/CustomButton.tsx
 import React from 'react';
-import { TouchableOpacity, Text, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { TouchableOpacity, Text, StyleProp, ViewStyle } from 'react-native';
+import { commonStyles } from '../styles/commonStyles';
+import { colors } from '../constants/colors';
 
-// Define the props interface for CustomButton
 interface CustomButtonProps {
   title: string;
   onPress: () => void;
-  style?: StyleProp<ViewStyle>; // For custom button container styles
-  textColor?: string; // For the text color
-  backgroundColor?: string; // For the button background color
-  textStyle?: StyleProp<TextStyle>; // Optional: For additional text styling
+  style?: StyleProp<ViewStyle>;
+  textColor?: string;
+  buttonType?: 'accent' | 'gray' | 'white'; // Different button styles
 }
-
-// Define local styles for the button
-const styles = {
-  button: {
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 10,
-  } as ViewStyle,
-  buttonText: {
-    fontSize: 16,
-    fontWeight: '600',
-  } as TextStyle,
-};
 
 const CustomButton: React.FC<CustomButtonProps> = ({
   title,
   onPress,
   style,
   textColor,
-  backgroundColor,
-  textStyle,
+  buttonType = 'accent',
 }) => {
-  console.log(`CustomButton pressed: ${title}`);
+  console.log(`CustomButton rendered: ${title}`);
 
-  // Merge the backgroundColor into the button style
-  const buttonStyles: StyleProp<ViewStyle> = [
-    styles.button,
-    backgroundColor && { backgroundColor }, // Apply backgroundColor if provided
-    style, // Apply custom style last to allow overriding
-  ];
+  const getButtonStyle = () => {
+    switch (buttonType) {
+      case 'gray':
+        return commonStyles.grayButton;
+      case 'white':
+        return commonStyles.whiteButton;
+      case 'accent':
+      default:
+        return commonStyles.accentButton;
+    }
+  };
 
-  // Merge the text color into the text style
-  const textStyles: StyleProp<TextStyle> = [
-    styles.buttonText,
-    textColor && { color: textColor }, // Apply textColor if provided
-    textStyle, // Apply custom textStyle last to allow overriding
-  ];
+  const getTextStyle = () => {
+    switch (buttonType) {
+      case 'gray':
+        return commonStyles.grayButtonText;
+      case 'white':
+        return commonStyles.whiteButtonText;
+      case 'accent':
+      default:
+        return commonStyles.accentButtonText;
+    }
+  };
 
   return (
-    <TouchableOpacity style={buttonStyles} onPress={onPress}>
-      <Text style={textStyles}>{title}</Text>
+    <TouchableOpacity style={[getButtonStyle(), style]} onPress={onPress}>
+      <Text style={[getTextStyle(), textColor ? { color: textColor } : {}]}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
-};
-
-// Define default props (optional)
-CustomButton.defaultProps = {
-  textColor: 'white', // Default text color
-  backgroundColor: '#007AFF', // Default background color (same as your original)
 };
 
 export default CustomButton;

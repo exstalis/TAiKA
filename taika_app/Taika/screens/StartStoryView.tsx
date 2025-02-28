@@ -4,6 +4,8 @@ import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
+import { commonStyles } from '../styles/commonStyles';
+import CustomButton from '../components/CustomButton';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -12,19 +14,19 @@ const StartStoryView = () => {
   console.log('StartStoryView rendered');
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.button}
+    <View style={commonStyles.centeredContainer}>
+      <CustomButton
+        title="Go to Landing"
         onPress={() => {
           console.log('Navigating to Landing');
           navigation.navigate('Landing');
         }}
-      >
-        <Text style={styles.buttonText}>Go to Landing</Text>
-      </TouchableOpacity>
+        buttonType="accent"
+      />
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
