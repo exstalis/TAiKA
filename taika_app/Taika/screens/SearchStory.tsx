@@ -1,4 +1,5 @@
 // screens/SearchStory.tsx
+// screens/SearchStory.tsx
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -23,15 +24,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: 30, // Flexible margins
+    marginVertical: 20,
   },
   title: {
+    fontFamily: 'MajorMonoDisplay_400Regular',
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: '400',
     marginBottom: 10,
+    textAlign: 'center', // Center title horizontally
   },
   subtitle: {
+    fontFamily: 'Nunito_400Regular',
     fontSize: 18,
     color: '#666',
+    textAlign: 'center', // Center subtitle horizontally
   },
 });
 

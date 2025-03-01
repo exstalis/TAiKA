@@ -9,12 +9,18 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/major-mono-display": "^0.2.3",
+    "@expo-google-fonts/noto-sans": "^0.2.3",
+    "@expo-google-fonts/noto-sans-display": "^0.2.3",
+    "@expo-google-fonts/nunito": "^0.2.3",
     "@expo/metro-runtime": "~4.0.1",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/stack": "^7.1.1",
     "expo": "~52.0.35",
+    "expo-font": "^13.0.4",
     "expo-linear-gradient": "^14.0.2",
+    "expo-splash-screen": "^0.29.22",
     "expo-status-bar": "~2.0.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
