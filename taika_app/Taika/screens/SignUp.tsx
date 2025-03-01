@@ -124,8 +124,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 30, // Updated to use flexible margins
-    marginVertical: 20,
+    marginHorizontal: 30,
   },
   header: {
     marginBottom: 20,

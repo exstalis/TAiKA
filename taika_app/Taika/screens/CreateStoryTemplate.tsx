@@ -3,12 +3,14 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from './@react-navigation/native-stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
 import { colors } from '../constants/colors';
 import { commonStyles } from '../styles/commonStyles';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
+import { BlurView } from '@react-native-community/blur';
+
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -18,7 +20,6 @@ const CreateStoryTemplate = () => {
 
   const handleNext = () => {
     console.log('Story template input:', templateInput);
-    // Navigate to WriteAboutStory with the input (we'll parse it later)
     navigation.navigate('WriteAboutStory', { templateInput });
   };
 
@@ -30,8 +31,8 @@ const CreateStoryTemplate = () => {
       <View style={styles.container}>
         <View style={styles.card}>
           <View style={styles.header}>
-            <Text style={[commonStyles.logo, { fontSize: 24 , color: colors.white}]}>create</Text>
-            <Text style={[commonStyles.tagline, { color: colors.suntastic, marginBottom: 20, fontSize: 16 }]}>
+            <Text style={[commonStyles.logo, { color: colors.suntastic, fontSize: 32 }]}>create</Text>
+            <Text style={[commonStyles.tagline, { color: colors.secondwhite, marginBottom: 20 }]}>
               story template
             </Text>
           </View>
@@ -39,7 +40,7 @@ const CreateStoryTemplate = () => {
             placeholder="type:<language to>,<word count>,<easy/moderate/advanced>"
             value={templateInput}
             onChangeText={(text) => setTemplateInput(text)}
-            maxLength={50} // Max 50 characters as per design
+            maxLength={50}
           />
           <Text style={styles.charLimit}>max:50</Text>
           <CustomButton
@@ -58,16 +59,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 20,
-    marginVertical: 20,
+    marginHorizontal: 30,
   },
   card: {
-    borderColor: colors.white,
-    borderWidth: 1,
+    backgroundColor: colors.secondarywhite, // Semi-transparent white
     borderRadius: 20,
-    padding: 10,
+    padding: 20,
     width: '100%',
     alignItems: 'center',
+    overflow: 'hidden', // Needed for BlurView
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4.65,
+    elevation: 8, // For Android
   },
   header: {
     marginBottom: 20,

@@ -22,8 +22,8 @@ const Landing = () => {
     >
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={commonStyles.logo}>TAIKA</Text>
-          <Text style={[commonStyles.tagline, {color: colors.suntastic}]}>generate/share bilingual stories</Text>
+          <Text style={[commonStyles.logo, { fontSize: 32, color: colors.secondwhite }]}>TAIKA</Text>
+          <Text style={[commonStyles.tagline, { color: colors.suntastic }]}>generate/share bilingual stories</Text>
         </View>
         <View style={styles.buttonContainer}>
           <CustomButton

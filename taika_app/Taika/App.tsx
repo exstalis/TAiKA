@@ -29,13 +29,13 @@ import WriteAboutStory from './screens/WriteAboutStory';
 import CreateStoryTemplate from './screens/CreateStoryTemplate';
 import StartStoryView from './screens/StartStoryView';
 import { RootStackParamList } from './types/navigation';
+import { colors } from './constants/colors';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
 
-  // Load fonts using @expo-google-fonts
   const [majorMonoLoaded] = useMajorMonoFonts({
     MajorMonoDisplay_400Regular,
   });
@@ -54,7 +54,6 @@ const App = () => {
     async function prepare() {
       try {
         await SplashScreen.preventAutoHideAsync();
-        // Fonts are already loaded by useFonts hooks
       } catch (e) {
         console.warn(e);
       } finally {
@@ -80,11 +79,28 @@ const App = () => {
       <Stack.Navigator
         initialRouteName="StartStoryView"
         screenOptions={{
-          headerShown: false,
+          headerStyle: {
+            backgroundColor: colors.suntastic,
+          },
+          headerTintColor: colors.darknavy,
+          headerTitleStyle: {
+            fontFamily: 'MajorMonoDisplay_400Regular',
+            fontSize: 20,
+          },
+          headerTitle: 'TAIKA', // Consistent title across screens
+          headerBackTitleVisible: false, // Hide back button label
         }}
       >
-        <Stack.Screen name="StartStoryView" component={StartStoryView} />
-        <Stack.Screen name="Landing" component={Landing} />
+        <Stack.Screen
+          name="StartStoryView"
+          component={StartStoryView}
+          options={{ headerShown: false }} // No header for StartStoryView
+        />
+        <Stack.Screen
+          name="Landing"
+          component={Landing}
+          options={{ headerLeft: () => null }} // No back button on Landing
+        />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SearchStory" component={SearchStory} />
         <Stack.Screen name="StoryDisplay" component={StoryDisplay} />

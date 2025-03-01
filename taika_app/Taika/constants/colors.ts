@@ -8,4 +8,6 @@ export const colors = {
     lightGray: '#e5e7eb', // For input field backgrounds
     pinkRedGradientStart: '#f80446', // Gradient start for Landing background
     peachOrangeGradientEnd: '#ff8c66', // Approximated peach/orange for gradient end
+    secondwhite: '#fffee6',
+    black: '#000000',
   };
