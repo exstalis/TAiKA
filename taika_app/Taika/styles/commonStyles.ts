@@ -25,9 +25,10 @@ export const commonStyles = StyleSheet.create({
   },
   tagline: {
     fontFamily: 'Nunito_400Regular',
-    fontSize: 16,
+    fontSize: 20,
     color: colors.darknavy,
     marginBottom: 40,
+    marginTop: 15,
     textAlign: 'center', // Center subtitle horizontally
   },
   accentButton: {

@@ -64,3 +64,71 @@ Based on the above, the navigation flow will look like this:
 - **Landing Page** → **Sign Up Page** (or directly to Story Creation if logged in).
 - **Landing Page** → **Story Creation (Step 1: Template)** → **Story Creation (Step 2: Description)** → **Story Display**.
 - Users can navigate back to previous screens or return to the landing page.
+StoryDisplay.tsx: the views for source language and the translated language needs to be updated.
+My idea to have two views like in the implementation and the views looks like they are the one piece. Basically: 
+
+
+
+We need to review StoryDisplay.tsx and update it to the new design.
+There are still view issues with the source language and the translated language.
+The views should look like this:
+  --------     TITLE: SOURCE LANGUAGE   --------
+|==================================================
+|  Il était une fois, au cœur d’une forêt vibrante,|
+| unécureuil curieux nommé Oliver.                 |
+| Oliver était pas comme les autres                |
+|                                                  |
+|                                                  |
+|===================================================
+|  --------     TITLE: TARGET LANGUAGE   --------  |
+|  Once upon a time, in the heart of a vibrant     |
+|   forest, there lived a curious squirrel         |
+|   named Oliver.                                  |
+|   Oliver was not like the other squirrels.       |
+|   While most were content gathering nuts,        |
+|   Oliver had an insatiable thirst for adventure. |
+|   One sunny morning, as he scurried up           |
+|   his usual path, he stumbled upon an old,       |
+|   dusty map tucked under a pile of leaves.       |
+|   The map seemed to lead to a hidden treasure    |
+|   somewhere deep within the forest...            |
+===================================================
+
+You can use one view and design the views based on that one.
+however since these are different languages, the lenght of the story would be different
+This is important because if I want to see the transcription of 
+a certain paragraph , word, sentence, it may be in the next or previous page. 
+Therefore, i would need to have two views. And within two views, they should navigate to the next page of the story. 
+You can put next/back indicators for the user to navigate easily, at the bottom of the each view.
+The views should look like this:
+The indicator buttons should be darknavy color.
+
+The shara and save buttons should be accent button where pinred is used. Every view and button should be align and adjusted to the design.Views are centered and adjusted to the design, centered. The container view needs to be fixed. When I look at the view view sunstastic color background, it has margins to the preceeding container. It should be full screen, horizontally and vertically aligned and flex for different size of device. 
+
+
+  --------     TITLE: SOURCE LANGUAGE   --------
+|==================================================
+|  Il était une fois, au cœur d’une forêt vibrante,|
+| unécureuil curieux nommé Oliver.                 |
+| Oliver était pas comme les autres                |
+|                                                  |
+|                                  
+       <                                  >                
+|===================================================
+|  --------     TITLE: TARGET LANGUAGE   --------  |
+|  Once upon a time, in the heart of a vibrant     |
+|   forest, there lived a curious squirrel         |
+|   named Oliver.                                  |
+|   Oliver was not like the other squirrels.       |
+|   While most were content gathering nuts,        |
+|   Oliver had an insatiable thirst for adventure. |
+|   One sunny morning, as he scurried up           |
+|   his usual path, he stumbled upon an old,       |
+|   dusty map tucked under a pile of leaves.       |
+|   The map seemed to lead to a hidden treasure    |
+|   somewhere deep within the forest...  
+  <                                             >  
+===================================================
+         -- share --            -- save --                  
+                       
+                                      

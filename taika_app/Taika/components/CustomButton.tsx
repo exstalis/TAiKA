@@ -59,16 +59,17 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center', // Align text horizontally
-    lineHeight: 24, // Adjust line height for vertical alignment
+    alignItems: 'center',
+    lineHeight: 20, // Adjust line height for vertical alignment
     fontFamily: 'NotoSansDisplay_400Regular',
     fontSize: 16,
-    paddingVertical: 15,
+    fontWeight: '400',
   },
   defaultButtonText: {
     fontFamily: 'NotoSansDisplay_400Regular',
     fontSize: 16,
     textAlign: 'center', // Align text horizontally
-    lineHeight: 24, // Adjust line height for vertical alignmentr
+    lineHeight: 20,
   },
 });
 

@@ -34,8 +34,8 @@ const WriteAboutStory = () => {
       <View style={styles.container}>
         <View style={styles.card}>
           <View style={styles.header}>
-            <Text style={[commonStyles.logo, { fontSize: 24 }]}>write about</Text>
-            <Text style={[commonStyles.tagline, { color: colors.pinkred, marginBottom: 20, fontSize: 20 }]}>
+            <Text style={[commonStyles.logo, { color: colors.suntastic, fontSize: 32 }]}>write about</Text>
+            <Text style={[commonStyles.tagline, { color: colors.secondwhite, fontSize: 20 }]}>
               a story
             </Text>
           </View>
@@ -69,12 +69,20 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   card: {
-    borderColor: colors.white,
-    borderWidth: 1,
+    backgroundColor: colors.secondarywhite, // Semi-transparent white
     borderRadius: 20,
-    padding: 10,
+    padding: 20,
     width: '100%',
     alignItems: 'center',
+    overflow: 'hidden', // Needed for BlurView
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4.65,
+    elevation: 8, // For Android
   },
   header: {
     marginBottom: 20,
