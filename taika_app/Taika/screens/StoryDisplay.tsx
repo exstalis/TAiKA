@@ -235,7 +235,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.suntastic,
-    // Removed margins to make it full-screen
   },
   storyView: {
     flex: 1,
@@ -243,7 +242,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.darknavy,
     borderRadius: 10,
-    overflow: 'hidden', // Ensure content stays within rounded corners
+    overflow: 'hidden',
   },
   titleBar: {
     backgroundColor: colors.white,
@@ -263,7 +262,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   storyContent: {
-    width: Dimensions.get('window').width, // Full width of the screen
+    width: Dimensions.get('window').width,
     padding: 15,
     flex: 1,
     justifyContent: 'flex-start',

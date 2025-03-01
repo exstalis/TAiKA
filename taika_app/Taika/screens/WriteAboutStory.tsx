@@ -31,11 +31,11 @@ const WriteAboutStory = () => {
       colors={[colors.pinkRedGradientStart, colors.peachOrangeGradientEnd]}
       style={commonStyles.fullScreenContainer}
     >
-      <View style={styles.container}>
+      <View style={commonStyles.centeredContainer}>
         <View style={styles.card}>
           <View style={styles.header}>
             <Text style={[commonStyles.logo, { color: colors.suntastic, fontSize: 32 }]}>write about</Text>
-            <Text style={[commonStyles.tagline, { color: colors.secondwhite, fontSize: 20 }]}>
+            <Text style={[commonStyles.tagline, { color: colors.secondwhite, marginBottom: 20 }]}>
               a story
             </Text>
           </View>
@@ -44,9 +44,9 @@ const WriteAboutStory = () => {
             value={plotInput}
             onChangeText={(text) => setPlotInput(text)}
             multiline
-            isMultiline={true} // Indicate multiline input
-            numberOfLines={4}
-            maxLength={300}
+            isMultiline={true}
+            numberOfLines={5}
+            maxLength={500}
           />
           <Text style={styles.charLimit}>max:300</Text>
           <CustomButton
@@ -61,13 +61,13 @@ const WriteAboutStory = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: 30,
-    marginVertical: 20,
-  },
+  // container: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   marginHorizontal: 30,
+  //   marginVertical: 20,
+  // },
   card: {
     backgroundColor: colors.secondarywhite, // Semi-transparent white
     borderRadius: 20,
