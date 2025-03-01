@@ -1,6 +1,6 @@
 // components/CustomButton.tsx
 import React from 'react';
-import { TouchableOpacity, Text, StyleProp, ViewStyle } from 'react-native';
+import { TouchableOpacity, Text, StyleProp, ViewStyle, StyleSheet } from 'react-native';
 import { commonStyles } from '../styles/commonStyles';
 import { colors } from '../constants/colors';
 
@@ -9,7 +9,7 @@ interface CustomButtonProps {
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
   textColor?: string;
-  buttonType?: 'accent' | 'gray' | 'white'; // Different button styles
+  buttonType?: 'accent' | 'gray' | 'white';
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -17,7 +17,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   onPress,
   style,
   textColor,
-  buttonType = 'accent',
+  buttonType,
 }) => {
   console.log(`CustomButton rendered: ${title}`);
 
@@ -28,20 +28,22 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       case 'white':
         return commonStyles.whiteButton;
       case 'accent':
-      default:
         return commonStyles.accentButton;
+      default:
+        return {};
     }
   };
 
   const getTextStyle = () => {
     switch (buttonType) {
       case 'gray':
-        return commonStyles.grayButtonText;
+        return [commonStyles.grayButtonText, styles.buttonText];
       case 'white':
-        return commonStyles.whiteButtonText;
+        return [commonStyles.whiteButtonText, styles.buttonText];
       case 'accent':
+        return [commonStyles.accentButtonText, styles.buttonText];
       default:
-        return commonStyles.accentButtonText;
+        return [styles.defaultButtonText];
     }
   };
 
@@ -53,5 +55,21 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  buttonText: {
+    textAlign: 'center', // Align text horizontally
+    lineHeight: 24, // Adjust line height for vertical alignment
+    fontFamily: 'NotoSansDisplay_400Regular',
+    fontSize: 16,
+    paddingVertical: 15,
+  },
+  defaultButtonText: {
+    fontFamily: 'NotoSansDisplay_400Regular',
+    fontSize: 16,
+    textAlign: 'center', // Align text horizontally
+    lineHeight: 24, // Adjust line height for vertical alignmentr
+  },
+});
 
 export default CustomButton;

@@ -23,7 +23,7 @@ const Landing = () => {
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={commonStyles.logo}>TAIKA</Text>
-          <Text style={commonStyles.tagline}>generate/share bilingual stories</Text>
+          <Text style={[commonStyles.tagline, {color: colors.suntastic}]}>generate/share bilingual stories</Text>
         </View>
         <View style={styles.buttonContainer}>
           <CustomButton
@@ -46,13 +46,13 @@ const Landing = () => {
     </LinearGradient>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 30,
+    marginHorizontal: 30,
+    marginVertical: 20,
   },
   header: {
     marginBottom: 40,

@@ -22,7 +22,6 @@ const SignUp = () => {
 
   const handleSignUp = () => {
     console.log('Sign up attempted with:', { yourName, surname, username, email, password });
-    // Placeholder for API call; for now, navigate back to Landing
     navigation.navigate('Landing');
   };
 
@@ -30,7 +29,7 @@ const SignUp = () => {
     <View style={styles.container}>
       <LinearGradient
         colors={[colors.white, colors.white, colors.pinkred]}
-        locations={[0, 0.6, 1]} // Gradient starts at 60% of the screen
+        locations={[0, 0.6, 1]}
         style={styles.gradientOverlay}
       />
       <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -72,7 +71,6 @@ const SignUp = () => {
           onPress={handleSignUp}
           buttonType="accent"
         />
-        {/* Placeholder for social media sign-up options */}
         <View style={styles.socialMediaContainer}>
           <Text style={styles.socialMediaLabel}>Or sign up with:</Text>
           <View style={styles.socialMediaButtons}>
@@ -116,18 +114,18 @@ const SignUp = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white, // Base white background
+    backgroundColor: colors.white,
   },
   gradientOverlay: {
     ...StyleSheet.absoluteFillObject,
-    opacity: 0.8, // Slight transparency for the gradient
+    opacity: 0.8,
   },
   scrollContent: {
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 30,
-    paddingVertical: 20,
+    marginHorizontal: 30, // Updated to use flexible margins
+    marginVertical: 20,
   },
   header: {
     marginBottom: 20,
@@ -137,6 +135,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   socialMediaLabel: {
+    fontFamily: 'NotoSans_400Regular',
     fontSize: 16,
     color: colors.darknavy,
     marginBottom: 10,
@@ -152,6 +151,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: 20,
     margin: 5,
+  },
+  socialMediaButtonText: {
+    fontFamily: 'NotoSansDisplay_400Regular',
+    fontSize: 16,
   },
 });
 
