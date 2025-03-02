@@ -1,6 +1,6 @@
 // screens/StoryDisplay.tsx
 import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, FlatList, Dimensions, NativeSyntheticEvent, NativeScrollEvent, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Dimensions, NativeSyntheticEvent, NativeScrollEvent, TouchableOpacity, Share } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '../types/navigation';
@@ -94,16 +94,30 @@ const StoryDisplay = () => {
     </View>
   );
 
-  const handleShare = (position: 'source' | 'target') => {
-    const pageIndex = position === 'source' ? sourcePageIndex : targetPageIndex;
-    const story = position === 'source' ? sourcePages[pageIndex] : targetPages[pageIndex];
-    console.log(`Share clicked for ${position} story page:`, story.substring(0, 50) + '...');
-  };
+  // Share both stories using the native share sheet (YouTube-style)
+  const handleShare = async () => {
+    try {
+      const sourceStory = sourcePages[sourcePageIndex];
+      const targetStory = targetPages[targetPageIndex];
+      const shareContent = `Source Story (${storyParams.sourceLanguage}):\n${sourceStory}\n\nTarget Story (${storyParams.targetLanguage}):\n${targetStory}`;
 
-  const handleSave = (position: 'source' | 'target') => {
-    const pageIndex = position === 'source' ? sourcePageIndex : targetPageIndex;
-    const story = position === 'source' ? sourcePages[pageIndex] : targetPages[pageIndex];
-    console.log(`Save clicked for ${position} story page:`, story.substring(0, 50) + '...');
+      const result = await Share.share({
+        message: shareContent,
+        title: 'Share Story from TAIKA',
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          console.log(`Shared via ${result.activityType}`);
+        } else {
+          console.log('Story shared successfully');
+        }
+      } else if (result.action === Share.dismissedAction) {
+        console.log('Share sheet dismissed');
+      }
+    } catch (error) {
+      console.error('Error sharing story:', error);
+    }
   };
 
   return (
@@ -194,38 +208,13 @@ const StoryDisplay = () => {
         </View>
       </View>
 
-      {/* Buttons at the bottom of the container view */}
+      {/* Single Share Button */}
       <View style={styles.bottomButtonContainer}>
-        <View style={styles.buttonRow}>
-          <Text style={styles.buttonLabel}>Source Story:</Text>
-          <CustomButton
-            title="share"
-            onPress={() => handleShare('source')}
-            buttonType="accent"
-            style={styles.actionButton}
-          />
-          <CustomButton
-            title="save"
-            onPress={() => handleSave('source')}
-            buttonType="accent"
-            style={styles.actionButton}
-          />
-        </View>
-        <View style={styles.buttonRow}>
-          <Text style={styles.buttonLabel}>Target Story:</Text>
-          <CustomButton
-            title="share"
-            onPress={() => handleShare('target')}
-            buttonType="accent"
-            style={styles.actionButton}
-          />
-          <CustomButton
-            title="save"
-            onPress={() => handleSave('target')}
-            buttonType="accent"
-            style={styles.actionButton}
-          />
-        </View>
+        <CustomButton
+          title="share"
+          onPress={handleShare}
+          style={styles.actionButton}
+        />
       </View>
     </View>
   );
@@ -239,8 +228,7 @@ const styles = StyleSheet.create({
   storyView: {
     flex: 1,
     marginVertical: 10,
-    borderWidth: 1,
-    borderColor: colors.darknavy,
+    borderWidth: 0, // No borders
     borderRadius: 10,
     overflow: 'hidden',
   },
@@ -252,7 +240,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontFamily: 'MajorMonoDisplay_400Regular',
     fontSize: 16,
     fontWeight: '400',
     color: colors.darknavy,
@@ -266,9 +253,9 @@ const styles = StyleSheet.create({
     padding: 15,
     flex: 1,
     justifyContent: 'flex-start',
+    backgroundColor: '#f5f5f5', // Secondary white for card background
   },
   storyText: {
-    fontFamily: 'NotoSans_400Regular',
     fontSize: 14,
     color: colors.grayishBlue,
     textAlign: 'justify',
@@ -292,24 +279,12 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   navButtonText: {
-    fontFamily: 'NotoSans_400Regular',
     fontSize: 16,
     color: colors.white,
   },
   bottomButtonContainer: {
     marginBottom: 20,
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    marginVertical: 5,
-  },
-  buttonLabel: {
-    fontFamily: 'NotoSans_400Regular',
-    fontSize: 14,
-    color: colors.darknavy,
-    marginRight: 10,
   },
   actionButton: {
     width: '40%',
